@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1100px" />
+  <title>Devis: Plateforme Fitness + Boutique | Rev'O GROUP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f12;          /* noir profond */
+      --panel:#15171c;       /* gris anthracite */
+      --muted:#9aa3b2;       /* gris texte */
+      --text:#e6e8ec;        /* texte principal */
+      --gold:#c9a227;        /* doré chic */
+      --gold-2:#e6c767;      /* doré clair */
+      --border: rgba(255,255,255,.06);
+      --ok:#39d98a;
+      --warn:#ffb020;
+      --accent:#3b82f6;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 600px at 80% -10%, rgba(201,162,39,.12), transparent 60%),
+               radial-gradient(1200px 600px at -10% 110%, rgba(230,199,103,.08), transparent 60%), var(--bg);
+      color:var(--text); font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial;
+      line-height:1.55; 
+    }
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
+          border:1px solid var(--border); border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,.35);
+          overflow:hidden}
+    .header{position:relative; padding:28px 28px 22px; background:linear-gradient(120deg, rgba(201,162,39,.12), rgba(255,255,255,0)); border-bottom:1px solid var(--border)}
+    .brand{display:flex; align-items:center; gap:14px}
+    .logo{width:46px;height:46px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold-2));display:grid;place-items:center;color:#111;font-weight:900;letter-spacing:.5px}
+    h1{font-size:24px;margin:0;font-weight:700;letter-spacing:.4px}
+    .subtitle{color:var(--muted); font-size:14px; margin-top:4px}
+    .grid{display:grid; gap:18px; grid-template-columns: repeat(12, 1fr)}
+    .panel{background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:18px}
+    .span-12{grid-column:span 12}
+    .span-6{grid-column:span 6}
+    .span-4{grid-column:span 4}
+    .kpi{display:flex;justify-content:space-between;align-items:center;margin-top:6px;color:var(--muted)}
+    .title{font-weight:600;letter-spacing:.3px}
+    .price{font-size:22px;font-weight:700;color:var(--gold)}
+    .muted{color:var(--muted)}
+    ul.clean{list-style:none;margin:12px 0 0;padding:0}
+    ul.clean li{padding:6px 0;border-bottom:1px dashed var(--border)}
+    ul.clean li:last-child{border-bottom:none}
+    .btns{display:flex;gap:12px;flex-wrap:wrap}
+    button, .btn{cursor:pointer; border:none; border-radius:12px; padding:12px 16px; font-weight:600}
+    .btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold)); color:#111}
+    .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
+    .footer{padding:16px 28px 28px; border-top:1px solid var(--border); color:var(--muted); font-size:13px}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    .chip{display:inline-flex;align-items:center;gap:8px; padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.02); font-size:12px; color:var(--muted)}
+    .table{width:100%; border-collapse:collapse; font-size:14px}
+    .table th,.table td{border-bottom:1px solid var(--border); padding:8px 8px; text-align:left; line-height: 1.4;}
+    .right{text-align:right}
+    .gold{color:var(--gold)}
+    .accent{color:var(--accent)}
+    .note{font-size:12px;color:var(--muted)}
+    .totals{display:grid;grid-template-columns:1fr auto; gap:12px; align-items:center}
+    .checkbox{transform:scale(1.1)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="header">
+        <div class="brand">
+          <div class="logo">R'</div>
+          <div>
+            <h1>Devis récapitulatif — Plateforme Fitness & Boutique</h1>
+            <div class="subtitle">Proposé par <span class="gold">Rev'O GROUP</span> · Benin | © Rev'O GROUP — Tous droits réservés</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="padding:22px">
+        <!-- Infos Client & Devis -->
+        <div class="panel span-12">
+          <div class="two-col">
+            <div>
+              <div class="title">Informations client</div>
+              <ul class="clean">
+                <li><strong>Client :</strong> <span contenteditable="true"> LUCODETTE GYM CLUB </span></li>
+                <li><strong>Contact :</strong> <span contenteditable="true">Nom · Tél · Email</span></li>
+                <li><strong>Adresse :</strong> <span contenteditable="true">Cotonou / Porto-Novo / Ab-Calavi</span></li>
+              </ul>
+            </div>
+            <div>
+              <div class="title">Informations devis</div>
+              <ul class="clean">
+                <li><strong>Référence :</strong> <span contenteditable="true">RVO-FIT-2025-001</span></li>
+                <li><strong>Date :</strong> <span id="today"></span></li>
+                <li><strong>Validité :</strong> 15 jours</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Packs principaux -->
+        <div class="panel span-12">
+          <div class="title" style="font-size:18px">Packs de réalisation (choisir un)</div>
+          <table class="table" id="packs">
+            <thead>
+              <tr><th>Pack</th><th>Contenu</th><th class="right">Prix (FCFA)</th><th class="right">Sélection</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Pack"><strong>Pack Essentiel (Vitrine)</strong><br><span class="muted">Présence en ligne</span></td>
+                <td data-label="Contenu">
+                  - Site vitrine moderne (présentation, 2 salles, témoignages)<br>
+                  - Formulaire de contact & carte de localisation<br>
+                  - <span class="muted" style="font-size:12px; color: var(--warn);">Ne permet pas la gestion des abonnés, le suivi des clients ou les cours en ligne.</span>
+                </td>
+                <td data-label="Prix (FCFA)" class="right" data-min="400000" data-max="400000">400 000</td>
+                <td data-label="Sélection" class="right"><input class="checkbox" type="radio" name="pack" value="400000" data-label="Pack Essentiel"/></td>
+              </tr>
+              <tr>
+                <td data-label="Pack"><strong>Pack Croissance (Gestion Complète)</strong><br><span class="gold" style="font-weight:600;">Le choix intelligent</span></td>
+                <td data-label="Contenu">
+                  - <strong>Toutes les fonctionnalités de base demandées :</strong><br>
+                  <span class="ok">✅</span> Base de données & gestion des abonnements<br>
+                  <span class="ok">✅</span> Suivi de la régularité des clients<br>
+                  <span class="ok">✅</span> Messages de rappel automatiques<br>
+                  <span class="ok">✅</span> Section pour cours en ligne (vidéos/PDF)<br>
+                  <span class="ok">✅</span> Back-office de gestion (clients, coachs, finances)<br>
+                  <span class="ok">✅</span> Application mobile (PWA) pour les clients
+                </td>
+                <td data-label="Prix (FCFA)" class="right" data-min="750000" data-max="1200000">À partir de 750 000</td>
+                <td data-label="Sélection" class="right"><input class="checkbox" type="radio" name="pack" value="750000" checked data-label="Pack Croissance"/></td>
+              </tr>
+              <tr>
+                <td data-label="Pack"><strong>Pack Performance (Premium)</strong><br><span class="muted">Vision à long terme</span></td>
+                <td data-label="Contenu">
+                  - Toutes les features du Pack Croissance<br>
+                  - <span class="accent">+</span> Gamification, communauté, notifications push avancées<br>
+                  - <span class="accent">+</span> Design premium & animations, reporting avancé
+                </td>
+                <td data-label="Prix (FCFA)" class="right" data-min="1800000" data-max="3000000">1 800 000 – 3 000 000</td>
+                <td data-label="Sélection" class="right"><input class="checkbox" type="radio" name="pack" value="1800000" data-label="Pack Performance"/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Options Boutique -->
+        <div class="panel span-12">
+          <div class="title" style="font-size:18px">Module Boutique intégrée (option)</div>
+          <table class="table" id="boutique">
+            <thead>
+              <tr><th>Option Boutique</th><th>Contenu</th><th class="right">Prix (FCFA)</th><th class="right">Inclure</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Option Boutique"><strong>Boutique – Niveau 1</strong><br><span class="muted">Simple</span></td>
+                <td data-label="Contenu">Catalogue, panier, paiement Mobile Money & CB, retrait/salle ou livraison basique</td>
+                <td data-label="Prix (FCFA)" class="right">500 000</td>
+                <td data-label="Inclure" class="right"><input class="checkbox" type="checkbox" value="500000" data-label="Boutique N1"/></td>
+              </tr>
+              <tr>
+                <td data-label="Option Boutique"><strong>Boutique – Niveau 2</strong><br><span class="muted">Avancée</span></td>
+                <td data-label="Contenu">+ Gestion de stock, codes promos, rapports ventes, livraisons zonées</td>
+                <td data-label="Prix (FCFA)" class="right">1 000 000</td>
+                <td data-label="Inclure" class="right"><input class="checkbox" type="checkbox" value="1000000" data-label="Boutique N2"/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Services récurrents -->
+        <div class="panel span-12">
+          <div class="title" style="font-size:18px">Services récurrents</div>
+          <table class="table" id="recurrent">
+            <thead>
+              <tr><th>Service</th><th>Détails</th><th class="right">Mensuel (FCFA)</th><th class="right">Inclure</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Service"><strong>Maintenance & Support</strong></td>
+                <td data-label="Détails">Sécurité, mises à jour, support, sauvegardes</td>
+                <td data-label="Mensuel (FCFA)" class="right">100 000</td>
+                <td data-label="Inclure" class="right"><input class="checkbox" type="checkbox" value="100000" data-label="Maintenance" checked/></td>
+              </tr>
+              <tr>
+                <td data-label="Service"><strong>Hébergement Cloud</strong></td>
+                <td data-label="Détails">Infra scalable, nom de domaine, monitoring</td>
+                <td data-label="Mensuel (FCFA)" class="right">40 000</td>
+                <td data-label="Inclure" class="right"><input class="checkbox" type="checkbox" value="40000" data-label="Hébergement"/></td>
+              </tr>
+              <tr>
+                <td data-label="Service"><strong>Assistance Marketing</strong></td>
+                <td data-label="Détails">Campagnes push, bannières, optimisation funnel</td>
+                <td data-label="Mensuel (FCFA)" class="right">60 000</td>
+                <td data-label="Inclure" class="right"><input class="checkbox" type="checkbox" value="60000" data-label="Marketing"/></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="note">Paiement à la livraison disponible pour la boutique. Intégrations paiement locales : Moov/MTN Mobile Money, Flooz, CB.</div>
+        </div>
+
+        <!-- Récap & Totaux -->
+        <div class="panel span-12">
+          <div class="title" style="font-size:18px">Récapitulatif & Totaux</div>
+          <div class="totals">
+            <div>
+              <div class="chip" id="recap-pack">Pack sélectionné : <span class="gold">Pack Croissance</span></div>
+              <div class="chip" id="recap-options">Options : <span class="muted">—</span></div>
+            </div>
+            <div class="right">
+              <div class="kpi"><span>Total unique (développement)</span> <span class="price" id="total-once">750 000 FCFA</span></div>
+              <div class="kpi"><span>Total récurrent / mois</span> <span class="price" id="total-month">100 000 FCFA</span></div>
+            </div>
+          </div>
+          <div class="btns" style="margin-top:14px">
+            <button class="btn btn-gold" onclick="window.print()">Imprimer / Enregistrer en PDF</button>
+            <button class="btn btn-ghost" id="reset">Réinitialiser</button>
+          </div>
+        </div>
+
+        <!-- Modalités -->
+        <div class="panel span-12">
+          <div class="grid">
+            <div class="span-6">
+              <div class="title">Modalités de paiement</div>
+              <ul class="clean">
+                <li>40% à la signature</li>
+                <li>40% à la livraison</li>
+                <li>20% après 1 mois de test</li>
+              </ul>
+            </div>
+            <div class="span-6">
+              <div class="title">Délais indicatifs</div>
+              <ul class="clean">
+                <li>Pack A : 2–4 semaines</li>
+                <li>Pack B : 4–8 semaines</li>
+                <li>Pack C : 8–12 semaines</li>
+              </ul>
+            </div>
+          </div>
+          <div class="note" style="margin-top:8px">Les délais & montants peuvent varier selon les demandes spécifiques, le contenu fourni et les intégrations tierces.</div>
+        </div>
+
+        <!-- Signature -->
+        <div class="panel span-12">
+          <div class="two-col">
+            <div>
+              <div class="title">Rev'O GROUP</div>
+              <div class="muted">RCCM / IFU 2019/06/34574 · Cotonou, Bénin</div>
+              <div class="muted">Email : <span contenteditable="true">contact@revo-group.bj</span> · Tél : <span contenteditable="true">+229 0162846011 </span></div>
+            </div>
+            <div>
+              <div class="title">Accord & signature</div>
+              <div style="height:68px;border:1px dashed var(--border);border-radius:10px;display:grid;place-items:center;color:var(--muted)">Signature & cachet du client</div>
+              <div class="note">En signant, le client accepte les termes du devis et les CGS de Rev'O GROUP.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        © <span class="gold">Rev'O GROUP</span> — Tous droits réservés • Confidentialité & Propriété intellectuelle : ce devis et ses livrables sont protégés par le droit d'auteur. Toute reproduction, diffusion ou usage non autorisé est strictement interdit.
+      </div>
+    </div>
+  </div>
+
+<script>
+  const fmt = n => new Intl.NumberFormat('fr-FR').format(n) + ' FCFA';
+  const today = new Date();
+  document.getElementById('today').textContent = today.toLocaleDateString('fr-FR');
+
+  const packRadios = document.querySelectorAll('input[name="pack"]');
+  const optionChecks = document.querySelectorAll('#boutique input[type="checkbox"]');
+  const recurChecks = document.querySelectorAll('#recurrent input[type="checkbox"]');
+  const totalOnceEl = document.getElementById('total-once');
+  const totalMonthEl = document.getElementById('total-month');
+  const recapPackEl = document.getElementById('recap-pack');
+  const recapOptionsEl = document.getElementById('recap-options');
+
+  function calc(){
+    let once = 0; let month = 0; let selectedPackLabel = '—';
+    packRadios.forEach(r=>{ if(r.checked){ once += Number(r.value); selectedPackLabel = r.dataset.label; } });
+    const opts = [];
+    optionChecks.forEach(c=>{ if(c.checked){ once += Number(c.value); opts.push(c.dataset.label); } });
+    recurChecks.forEach(c=>{ if(c.checked){ month += Number(c.value); } });
+    totalOnceEl.textContent = fmt(once);
+    totalMonthEl.textContent = fmt(month);
+    recapPackEl.innerHTML = 'Pack sélectionné : <span class="gold">'+selectedPackLabel+'</span>';
+    recapOptionsEl.innerHTML = 'Options : ' + (opts.length? '<span class="accent">'+opts.join(', ')+'</span>' : '<span class="muted">—</span>');
+  }
+  packRadios.forEach(r=>r.addEventListener('change', calc));
+  optionChecks.forEach(c=>c.addEventListener('change', calc));
+  recurChecks.forEach(c=>c.addEventListener('change', calc));
+  document.getElementById('reset').addEventListener('click', ()=>{
+    document.querySelector('input[name="pack"][value="750000"]').checked = true;
+    optionChecks.forEach(c=> c.checked = false);
+    document.querySelector('#recurrent input[value="100000"]').checked = true;
+    document.querySelector('#recurrent input[value="40000"]').checked = false;
+    document.querySelector('#recurrent input[value="60000"]').checked = false;
+    calc();
+  });
+  calc();
+</script>
+</body>
+</html>
